@@ -36,7 +36,7 @@ enum class ReferenceWord : uint16_t {
     BREATH_RATE_CONFIDENCE      = MASK(ControlWord::HEART_INFO,0x04),
     BREATH_RATE_WAVEFORM        = MASK(ControlWord::HEART_INFO,0x05),
     OUT_OF_BOUNDS_STATUS        = MASK(ControlWord::RANGE_INFO,0x07),
-    MODULE_RESET                = MASK(ControlWord::PACKET_HEARTBEAT, 0x02), 
+    MODULE_RESET                = MASK(ControlWord::PACKET_HEARTBEAT,0x02), 
 };
 
 struct Packet {
