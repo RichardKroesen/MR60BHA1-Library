@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.14)
-project(YourLibraryTest)
+project(MR60BHA1)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(lib)
+set(LIBRARY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/lib)
+set(TESTS_DIR ${CMAKE_SOURCE_DIR}/tests)
+
+include_directories(${LIBRARY_INCLUDE_DIR})
 
 include(FetchContent)
 FetchContent_Declare(
@@ -17,23 +20,22 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 include(GoogleTest)
+
 #  Checksum Test
 add_executable(
   checksum_test
-  ../tests/MR60BHA1_checksum_test.cpp
+  ${TESTS_DIR}/MR60BHA1_checksum_test.cpp
 )
-
 target_link_libraries(
   checksum_test
   GTest::gtest_main
 )
-
 gtest_discover_tests(checksum_test)
 
 # Frame Test
 add_executable(
   frame_test
-  ../tests/MR60BHA1_frame_test.cpp
+  ${TESTS_DIR}/MR60BHA1_frame_test.cpp
 )
 target_link_libraries(
   frame_test

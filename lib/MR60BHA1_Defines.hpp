@@ -8,9 +8,14 @@
 
 namespace MR60BHA1 {
 
+constexpr uint8_t START_BYTE_1 = 0x53;  // 'S'
+constexpr uint8_t START_BYTE_2 = 0x59;  // 'Y'
+constexpr uint8_t END_BYTE_1 = 0x54;    // 'T'
+constexpr uint8_t END_BYTE_2 = 0x43;    // 'C'
+
 enum class FrameConstants : uint16_t {
-    START           = MASK(0x53, 0x59),             /* FH - Frame header fixed sequence, ASCII: "S Y" */
-    END             = MASK(0x54, 0x43),             /* FT - End of frame fixed sequence, ASCII: "T C" */    
+    START           = MASK(START_BYTE_1, START_BYTE_2), /* FH - Frame header fixed sequence, ASCII: "S Y" */
+    END             = MASK(END_BYTE_1, END_BYTE_2),     /* FT - End of frame fixed sequence, ASCII: "T C" */    
 };
 
 /* Specification of which part you select to control. */
